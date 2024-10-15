@@ -9,18 +9,19 @@ export const AssinaturaNewsletterContainer = styled.div`
     @media (min-width: 920px) {
         background-color: transparent;
         margin-top: 155px;
-        &:after {
+          &:after {
             content: "";
             display: block;
             width: 787px;
             height: 975px;
             background-image: url('/images/hero-image.png');
             position: absolute;
-            --baseDistance: -319px;
+            --baseDistance: -287px;
             top: calc(var(--baseDistance) + 50px);
             right: 0;
             z-index: -1;
             pointer-events: none;
+          }
         }
     }
 `;
