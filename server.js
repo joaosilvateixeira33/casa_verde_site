@@ -1,22 +1,24 @@
 const jsonServer = require('json-server');
 const next = require('next');
+const path = require('path');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const server = jsonServer.create();
-const router = jsonServer.router('db.json');
+const router = jsonServer.router(path.join(__dirname, 'db.json'));
 
 server.use(jsonServer.defaults());
-server.use(router);
+server.use('/plants', router); 
 
 app.prepare().then(() => {
   server.get('*', (req, res) => {
     return handle(req, res);
   });
 
-  server.listen(3000, () => {
-    console.log('Servidor rodando em http://localhost:3000');
+  const port = process.env.PORT || 3000; // Usa a porta do ambiente ou 3000
+  server.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`);
   });
 });
