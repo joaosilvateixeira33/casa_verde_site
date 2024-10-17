@@ -7,17 +7,17 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, 'db.json'));
+const router = jsonServer.router(path.join(__dirname, 'db.json')); // Define o caminho absoluto do arquivo
 
 server.use(jsonServer.defaults());
-server.use('/plants', router); 
+server.use('/api', router); // Define o caminho base para o JSON Server
 
 app.prepare().then(() => {
   server.get('*', (req, res) => {
     return handle(req, res);
   });
 
-  const port = process.env.PORT || 3001; // Usa a porta do ambiente ou 3000
+  const port = process.env.PORT || 3000; // Usa a porta do ambiente ou 3000
   server.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
   });
