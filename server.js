@@ -17,7 +17,7 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  const port = process.env.PORT || 3000; // Usa a porta do ambiente ou 3000
+  const port = process.env.PORT || 3001; // Usa a porta do ambiente ou 3000
   server.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
   });
