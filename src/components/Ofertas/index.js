@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CardsPlants from "../plantasCard"; // Importando o componente de cartões de plantas
-import { API_URL } from "../../../pages/api/bd"; // URL da API
-import { ToastContainer, toast } from "react-toastify"; // Importando Toastify
-import 'react-toastify/dist/ReactToastify.css'; // Estilos do Toastify
 
 const PlantsContainer = styled.section`
     display: flex;
@@ -65,7 +62,6 @@ export default function NossasPlantas() {
             <Subtitle>Conheça</Subtitle>
             <Title>Nossas plantas</Title>
             <CardsPlants/>
-            <ToastContainer /> {/* Adicionando ToastContainer */}
         </PlantsContainer>
     );
 }
