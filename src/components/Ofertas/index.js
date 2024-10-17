@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import CardsPlants from "../plantasCard"; // Importando o componente de cartões de plantas
+import CardsPlants from "../plantasCard";
 
 const PlantsContainer = styled.section`
     display: flex;

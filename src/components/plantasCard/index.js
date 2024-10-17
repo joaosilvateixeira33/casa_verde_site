@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { fetchPlantas } from '../../../pages/api/bd';
+import { data } from '../../data'; // Ajuste o caminho de importação
 import { Filter } from '../FillterCards';
 import SortButtons from '../SortButtons';
 
+// Estilos do componente
 const PlantCard = styled.div`
     display: flex;
     align-items: center;
@@ -62,28 +63,11 @@ const Loader = styled.div`
 `;
 
 export default function CardsPlants() {
-    const [plants, setPlants] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [plants, setPlants] = useState(data);
+    const [loading, setLoading] = useState(false);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(200);
     const [sortCriteria, setSortCriteria] = useState('');
-    const [error, setError] = useState('');
-
-    useEffect(() => {
-        const loadPlants = async () => {
-            try {
-                const plantsData = await fetchPlantas();
-                setPlants(plantsData);
-            } catch (error) {
-                console.error("Erro ao carregar as plantas:", error);
-                setError("Não foi possível carregar as plantas. Tente novamente mais tarde.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadPlants();
-    }, []);
 
     const filteredPlants = plants
         .filter((plant) => {
@@ -108,14 +92,6 @@ export default function CardsPlants() {
     const handleSortChange = (criteria) => {
         setSortCriteria(criteria);
     };
-
-    if (loading) {
-        return <Loader>Carregando plantas...</Loader>;
-    }
-
-    if (error) {
-        return <Loader>{error}</Loader>;
-    }
 
     return (
         <>

@@ -1,5 +1,4 @@
-{
-    "plants": [
+export const data = [
       {
         "id": 1,
         "name": "Ajuga reptans",
@@ -43,5 +42,5 @@
         "inStock": true
       }
     ]
-  }
+
   
