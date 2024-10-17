@@ -10,7 +10,7 @@ const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, 'db.json')); // Define o caminho absoluto do arquivo
 
 server.use(jsonServer.defaults());
-server.use('/api', router); // Define o caminho base para o JSON Server
+server.use('/', router); // Define o caminho base para o JSON Server
 
 app.prepare().then(() => {
   server.get('*', (req, res) => {
